@@ -1,6 +1,6 @@
-package exception;
+package com.doczilla.students.exception;
 
-public class DaoException extends Exception{
+public class DaoException extends RuntimeException{
     public DaoException() {
     }
 

@@ -1,5 +1,9 @@
-package domain;
+package com.doczilla.students.domain;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class Student {
@@ -9,10 +13,7 @@ public class Student {
     private String lastname;
     private String middleName;
     private LocalDate birthday;
-    private int group;
-
-    public Student() {
-    }
+    private String group;
 
     public int getId() {
         return id;
@@ -22,6 +23,8 @@ public class Student {
         this.id = id;
     }
 
+    @NotEmpty
+    @Length(min = 3, max = 45)
     public String getName() {
         return name;
     }
@@ -30,6 +33,8 @@ public class Student {
         this.name = name;
     }
 
+    @NotEmpty
+    @Length(min = 3, max = 45)
     public String getLastname() {
         return lastname;
     }
@@ -38,6 +43,8 @@ public class Student {
         this.lastname = lastname;
     }
 
+    @NotEmpty
+    @Length(min = 3, max = 45)
     public String getMiddleName() {
         return middleName;
     }
@@ -46,6 +53,7 @@ public class Student {
         this.middleName = middleName;
     }
 
+    @NotNull
     public LocalDate getBirthday() {
         return birthday;
     }
@@ -54,11 +62,13 @@ public class Student {
         this.birthday = birthday;
     }
 
-    public int getGroup() {
+    @NotEmpty
+    @Length(min = 3, max = 45)
+    public String getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
+    public void setGroup(String group) {
         this.group = group;
     }
 }
