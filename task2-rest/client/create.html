@@ -1,0 +1,67 @@
+<html>
+<head>
+    <link rel="stylesheet" href="create-style.css">
+    <title>Students DB Application</title>
+
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>Students Management</h1>
+    <h2>
+        <a href="create.html">Add New Students</a>
+        <a href="index.html">List All Students</a>
+    </h2>
+</div>
+<div style="text-align: center;">
+    <form>
+        <table>
+            <caption>
+                <h2>
+                    Add New Student
+                </h2>
+            </caption>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <input type="text" name="name" size="45" id="name"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Lastname:</th>
+                <td>
+                    <input type="text" name="lastname" size="45" id="lastname"/>
+                    
+                </td>
+            </tr>
+            <tr>
+                <th>Middle name:</th>
+                <td>
+                    <input type="text" name="middleName" size="45" id="middleName"/>
+                    
+                </td>
+            </tr>
+            <tr>
+                <th>Birthday:</th>
+                <td>
+                    <input type="date" name="birthday" size="10" id="birthday"/>
+                  
+                </td>
+            </tr>
+            <tr>
+                <th>Group:</th>
+                <td>
+                    <input type="text" name="group" size="45" id="group" />
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" value="Save" id="save"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script src="create.js"></script>
+</body>
+</html>

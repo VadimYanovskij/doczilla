@@ -1,0 +1,24 @@
+.container {
+    width: 820px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    margin: 0 auto;
+}
+th, td {
+    padding: 6px;
+}
+
+.delete {
+    cursor: pointer;
+}
