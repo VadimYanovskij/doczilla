@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TODO List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body id="body">
+  <div class="container">
+    <header class="header">
+      <div class="header_search-panel">
+        <input class="header_search" type="text" placeholder="Поиск">
+        <img class="search-icon" src="img/search.svg" alt="search">
+      </div>
+      <div class="header_icon">
+        <img src="img/icon.svg" alt="user-icon">
+      </div>
+    </header>
+    <main class="main">
+      <div class="main_calendar">
+        <input class="period_btn" id="today" type="button" value="Сегодня">
+        <input class="period_btn" type="button" value="На неделю">
+        <input id="calendar" сlass="calendar" type="date" name="calendar" value="2022-05-22">
+        <div class="check">
+          <input class="taskCard-status-check" type="checkbox" id="check"><label for="check">Только
+            невыполненные</label>
+        </div>
+      </div>
+      <div class="main_tasks">
+        <div class="main_tasks-date-sort">
+          <div class="main_tasks-sort">Сортировать по дате</div>
+        </div>
+        <div class="tasks_list"> </div>
+      </div>
+    </main>
+    <div class="modal">
+      <div class="modal_inner">
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
