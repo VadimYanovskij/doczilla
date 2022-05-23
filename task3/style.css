@@ -96,6 +96,7 @@ body {
   height: 34px;
   background: #c4c4c4;
   margin-bottom: 14px;
+  cursor: pointer;
 }
 
 .check {
@@ -200,5 +201,27 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  padding-top: 140px;
   display: none;
+  padding-right: 40px;
+}
+
+.modal_inner {
+  width: 80%;
+  background-color: #fff;
+   margin: 0 auto;
+   padding: 16px;
+}
+
+
+.close {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  font-size: 24px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
 }

@@ -2,7 +2,12 @@ const mainTasksDate = document.querySelector('.main_tasks-date-sort');
 const tasksList = document.querySelector('.tasks_list');
 const tasksStatusCheckbox = document.getElementById('check');
 const currentDateBtn = document.getElementById('today');
+const weekBtn = document.getElementById('week');
 const calendar = document.getElementById('calendar');
+const modalInner = document.querySelector('.modal_inner');
+const modal = document.querySelector('.modal');
+const close = document.querySelector('.close');
+const oneDay = 86400000;
 let currentDate = (new Date()).toISOString().slice(0, 10);
 let currentDateShow = Date.parse(new Date());
 let data = [];
@@ -36,10 +41,11 @@ async function getData(url) {
 
 function showTasks(data) {
     data.forEach((element, index) => {
+
         let taskCard;
         if (element.status == true) {
             taskCard = `
-        <div class="task_card task_card-checked" id=${element.id}>
+        <div class="task_card task_card-checked" id=${index}>
           <div class="taskCard-content">
           <h4 class="task_card-title">${element.name}</h4>
           <p>${element.shortDesc}</p>
@@ -53,7 +59,7 @@ function showTasks(data) {
         `
         } else {
             taskCard = `
-        <div class="task_card" id=${element.id}>
+        <div class="task_card" id=${index}>
           <div class="taskCard-content">
           <h4 class="task_card-title">${element.name}</h4>
           <p>${element.shortDesc}</p>
@@ -67,6 +73,12 @@ function showTasks(data) {
         `
         }
         tasksList.insertAdjacentHTML("afterbegin", taskCard);
+        let taskElement = document.querySelectorAll('.task_card')
+        taskElement.forEach((el, index) => {
+            el.addEventListener('click', function () {
+                showFullDecription(data[el.id], index)
+            })
+        })
     });
 }
 
@@ -114,12 +126,38 @@ function dateTask(searhFromDate, searhToDate) {
     getData(serachDateUrl);
 }
 
-
 calendar.addEventListener("change", (event) => {
     searhFromDate = Date.parse(event.target.value);
-    searhToDate = +Date.parse(event.target.value) + 86399999;
+    searhToDate = +Date.parse(event.target.value) + oneDay - 1;
     dateTask(searhFromDate, searhToDate)
 })
 
+currentDateBtn.addEventListener("click", function () {
+    tasksList.innerHTML = "";
+    currentDateUrl = " https://todo.doczilla.pro/api/todos/date?from=" + currentDateShow + "&to=" + (currentDateShow + oneDay - 1) + "&limit=10";
+    getData(currentDateUrl);
+})
 
+weekBtn.addEventListener("click", function () {
+    tasksList.innerHTML = "";
+    weekDateUrl = " https://todo.doczilla.pro/api/todos/date?from=" + currentDateShow + "&to=" + (currentDateShow + oneDay * 7 - 1) + "&limit=10";
+    getData(weekDateUrl);
+})
 
+function showFullDecription(data) {
+    modal.style.display = "block";
+    let fullDecription = `
+    <div class="task_description">
+      <h3 class="task_description-title">
+      ${data.name}
+      </h3>
+      <p class="task_description-date"></p>
+      <p class="task_description-text"> ${data.fullDesc}</p>
+      </div>
+    `
+    modalInner.innerHTML = fullDecription;
+}
+
+close.addEventListener("click", function () {
+    modal.style.display = "none";
+})
